@@ -16,7 +16,7 @@ $attempts = 0;
 
 do {
     echo 'Por favor digite una letra: ' . PHP_EOL;
-    $letter = trim(fgets(handle: STDIN));
+    $letter = trim(fgets(STDIN));
 
     $letters = str_split_unicode($secretWord);
 
@@ -26,10 +26,10 @@ do {
         echo "Incorrecto" . PHP_EOL;
     }
     $attempts++;
-} while ($intentos <= MAX_ATTEMPTS);
+} while ($attempts <= MAX_ATTEMPTS);
 
 function str_split_unicode($str){
-    return preg_split(pattern: "//u" , $str,  limit: -1, flags: PREG_SPLIT_NO_EMPTY );
+    return preg_split("//u" , $str,-1,PREG_SPLIT_NO_EMPTY );
 }
 
 // en caso de adivinar la h en "hola"
@@ -42,7 +42,7 @@ function get_guessed_world(){
         if (!in_array($letter, $letterGuessed)) {
             $gueseedWord .= '_';
         }else {
-            $gueseedWord .= $letter
+            $gueseedWord .= $letter;
         }
     }
 
